@@ -10,15 +10,19 @@ public class TriangleLogic implements ITriangleLogic {
 
     public String checkTriangle(Triangle triangle) {
 
-        // Check for equilateral triangle
-        if (triangle.getFirstSide() == triangle.getSecondSide() && triangle.getSecondSide() == triangle.getThirdSide())
+        // To check if sides are more than 0
+        if (triangle.getFirstSide() <= 0 || triangle.getSecondSide() <= 0 || triangle.getThirdSide() <= 0)
+            return ("Not a triangle");
+
+        // To check if all sides are equal
+        else if (triangle.getFirstSide() == triangle.getSecondSide() && triangle.getSecondSide() == triangle.getThirdSide())
             return ("Equilateral Triangle");
 
-            // Check for isosceles triangle
+        // To check if at least 2 sides are equal
         else if (triangle.getFirstSide() == triangle.getSecondSide() || triangle.getSecondSide() == triangle.getThirdSide() || triangle.getThirdSide() == triangle.getFirstSide())
             return ("Isosceles Triangle");
 
-            // Otherwise scalene triangle
+        // To say that neither of sides are equal
         else
             return ("Scalene Triangle");
     }
