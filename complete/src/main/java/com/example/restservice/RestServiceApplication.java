@@ -13,14 +13,14 @@ public class RestServiceApplication {
         SpringApplication.run(RestServiceApplication.class, args);
     }
 
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/triangle").allowedOrigins("http://localhost:8080");
-//            }
-//        };
-//    }
-
+    //For CORS
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/triangle").allowedOrigins("http://localhost:8000");
+            }
+        };
+    }
 }
