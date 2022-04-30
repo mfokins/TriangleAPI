@@ -14,13 +14,39 @@
     <title>TriangleJS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
     <script src="TriangleController.js"></script>
-
 </head>
 
 <body>
-    <div ng-controller="GetTriangle">
-        <p>The content is {{ result.content }}</p>
-    </div>
+<div ng-app="myApp" ng-controller="MyCtrl">
+    <form ng-submit="search()">
+        <div>Enter your triangle sides below: </div>
+        <table>
+            <tr>
+                <td><label>X:
+                    <input type="number" ng-model="x" required/>
+                </label></td>
+            </tr>
+            <tr>
+                <td><label>Y:
+                    <input type="number" ng-model="y" required/>
+                </label></td>
+            </tr>
+            <tr>
+                <td><label>Z:
+                    <input type="number" ng-model="z" required/>
+                </label></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Check"></td>
+            </tr>
+        </table>
+    </form>
+
+        <div>
+        <p>{{ triangleResult.content }}</p>
+        </div>
+
+</div>
 </body>
 
 </html>

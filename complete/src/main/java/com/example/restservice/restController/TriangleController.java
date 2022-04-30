@@ -5,10 +5,7 @@ import com.example.restservice.model.ResponseMessage;
 import com.example.restservice.model.Triangle;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
@@ -26,9 +23,20 @@ public class TriangleController {
         this.triangleLogic = triangleLogic;
     }
 
+    //  REST GET request to test the dummy data retrieval.
     //  @CrossOrigin(origins = "http://localhost:8000")  //For manual CORS
     @GetMapping("/triangle")
-    public ResponseMessage getTriangleType(
+    public ResponseMessage getTriangle(
+            @RequestParam(value = "x", defaultValue = "0") int x,
+            @RequestParam(value = "y", defaultValue = "0") int y,
+            @RequestParam(value = "z", defaultValue = "0") int z) throws IOException, InterruptedException {
+        return new ResponseMessage("Triangle №:" + counter.incrementAndGet() + " " +
+                String.format(template, triangleLogic.checkTriangle(new Triangle(x, y, z))));
+    }
+
+    //  REST POST request for sending data from the client, check the triangle on server side and return the response message
+    @PostMapping("/triangle")
+    public ResponseMessage requestTriangleType(
             @RequestParam(value = "x", defaultValue = "0") int x,
             @RequestParam(value = "y", defaultValue = "0") int y,
             @RequestParam(value = "z", defaultValue = "0") int z) throws IOException, InterruptedException {

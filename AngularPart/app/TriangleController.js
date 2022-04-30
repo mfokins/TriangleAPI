@@ -1,9 +1,19 @@
 'use strict';
-var myapp = angular.module('myApp', []);
-myapp.controller('GetTriangle', function ($scope, $http) {
-    $http.get('http://localhost:8080/triangle').success(function (response) {
-        $scope.result = {
-            content: response.content
+var url = 'http://localhost:8080/triangle';
+
+angular.module('myApp', [])
+    .controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
+
+        $scope.search = function () {
+            $http({
+                url: url,
+                method: 'GET',
+                params: {x: $scope.x, y: $scope.y, z: $scope.z},
+            }).success(function (response) {
+                $scope.triangleResult = {
+                    content: response.content
+                };
+            });
         };
-    });
-});
+    }]);
+
