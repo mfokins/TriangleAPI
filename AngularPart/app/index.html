@@ -10,47 +10,118 @@
 
 <html ng-app="myApp" lang="">
 
+
 <head>
     <title>TriangleJS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
     <script src="TriangleController.js"></script>
+    <script>
+        function showImage() {
+            document.getElementById('triangleDiv').style.display = "block";}
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body,h1 {font-family: "Raleway", sans-serif}
+        body, html {height: 100%}
+        .bgimg {
+            background-image: url('img/triangle.png');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-color: #cccccc;
+        }
+    </style>
 </head>
 
-<body >
-<div ng-app="myApp" ng-controller="TriangleController">
-    <form ng-submit="search()">
-        <div>Enter your triangle sides below: </div>
-        <table>
-            <tr>
-                <td><label>X:
-                    <input type="number" ng-model="x" required/>
-                </label></td>
-            </tr>
-            <tr>
-                <td><label>Y:
-                    <input type="number" ng-model="y" required/>
-                </label></td>
-            </tr>
-            <tr>
-                <td><label>Z:
-                    <input type="number" ng-model="z" required/>
-                </label></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Check"></td>
-            </tr>
-        </table>
-    </form>
+<body>
 
-        <div>
-        <p>{{ triangleResult.content }}</p>
-        </div>
-
-    <div>
-        <img alt="triangle" ng-src="{{triangleResult.img()}}" style="height: 100px; width: 100px" />
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-black">
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+        Triangle API
     </div>
 
-</div>
+    <div class="w3-display-middle" ng-app="myApp" ng-controller="TriangleController">
+        <h1 class="w3-jumbo w3-animate-top">Check triangle</h1>
+        <hr class="w3-border-grey" style="margin:auto;width:40%">
+        <p class="w3-large w3-center">Enter your triangle sides below</p>
+
+            <form ng-submit="search()" style="alignment: center">
+                <table style="margin-left:auto;margin-right:auto;">
+                    <tr>
+                        <td style="align-self: auto"><label>
+                            <input type="number" ng-model="x" placeholder="X" required/>
+                        </label></td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            <input type="number" ng-model="y" placeholder="Y" required/>
+                        </label></td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            <input type="number" ng-model="z" placeholder="Z" required/>
+                        </label></td>
+                    </tr>
+                    <tr class="w3-center">
+                        <td><input type="submit" onclick="showImage()" value="Check"></td>
+                    </tr>
+                </table>
+            </form>
+
+            <div class="w3-large w3-center w3-animate-bottom" style="display: none" id="triangleDiv">
+                <p >{{ triangleResult.content }}</p>
+                <img ng-src="{{triangleResult.img()}}" style=" height: 200px; width: 200px" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="w3-display-bottomleft w3-padding-large">
+        Made by <a href="https://github.com/mfokins" target="_blank">Maksims Fokins</a>
+    </div>
+<!--</div>-->
+
 </body>
+
+<!--<body>-->
+<!--<div ng-app="myApp" ng-controller="TriangleController">-->
+<!--    <form ng-submit="search()">-->
+<!--        <div>Enter your triangle sides below: </div>-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td><label>X:-->
+<!--                    <input type="number" ng-model="x" required/>-->
+<!--                </label></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Y:-->
+<!--                    <input type="number" ng-model="y" required/>-->
+<!--                </label></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Z:-->
+<!--                    <input type="number" ng-model="z" required/>-->
+<!--                </label></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><input type="submit" value="Check"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+
+<!--        <div>-->
+<!--        <p>{{ triangleResult.content }}</p>-->
+<!--        </div>-->
+
+<!--    <div>-->
+<!--        <img alt="triangle" ng-src="{{triangleResult.img()}}" style="height: 100px; width: 100px" />-->
+<!--    </div>-->
+
+<!--</div>-->
+<!--</body>-->
 
 </html>
