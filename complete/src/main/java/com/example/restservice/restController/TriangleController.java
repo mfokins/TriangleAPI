@@ -23,20 +23,10 @@ public class TriangleController {
         this.triangleLogic = triangleLogic;
     }
 
-    //  REST GET request to test the dummy data retrieval.
+    //  REST GET request for sending data from the client, check the triangle on server side and return the response message
     //  @CrossOrigin(origins = "http://localhost:8000")  //For manual CORS
     @GetMapping("/triangle")
     public ResponseMessage getTriangle(
-            @RequestParam(value = "x", defaultValue = "0") int x,
-            @RequestParam(value = "y", defaultValue = "0") int y,
-            @RequestParam(value = "z", defaultValue = "0") int z) throws IOException, InterruptedException {
-        return new ResponseMessage("Triangle №:" + counter.incrementAndGet() + " " +
-                String.format(template, triangleLogic.checkTriangle(new Triangle(x, y, z))));
-    }
-
-    //  REST POST request for sending data from the client, check the triangle on server side and return the response message
-    @PostMapping("/triangle")
-    public ResponseMessage requestTriangleType(
             @RequestParam(value = "x", defaultValue = "0") int x,
             @RequestParam(value = "y", defaultValue = "0") int y,
             @RequestParam(value = "z", defaultValue = "0") int z) throws IOException, InterruptedException {
