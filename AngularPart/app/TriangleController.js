@@ -1,9 +1,8 @@
 'use strict';
+var app = angular.module('myApp', []);
 var url = 'http://localhost:8080/triangle';
 
-angular.module('myApp', [])
-    .controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
-
+    app.controller('TriangleController', ['$scope', '$http', function ($scope, $http) {
         $scope.search = function () {
             $http({
                 url: url,
@@ -11,9 +10,13 @@ angular.module('myApp', [])
                 params: {x: $scope.x, y: $scope.y, z: $scope.z},
             }).success(function (response) {
                 $scope.triangleResult = {
-                    content: response.content
-                };
-            });
-        };
-    }]);
-
+                    content: response.content,
+                    img : function () {
+                        if (response.content.includes('Equilateral Triangle')) {return  'img/Equilateral.png';}
+                        if (response.content.includes('Isosceles Triangle')) {return  'img/Isosceles.png';}
+                        if (response.content.includes('Scalene Triangle')) {return  'img/Scalene.png';}
+                        if (response.content.includes('Not a triangle')) {return  'img/NotATriangle.png';}
+                    }};
+                });
+            };
+        }]);

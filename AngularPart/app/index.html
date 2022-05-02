@@ -16,8 +16,8 @@
     <script src="TriangleController.js"></script>
 </head>
 
-<body>
-<div ng-app="myApp" ng-controller="MyCtrl">
+<body >
+<div ng-app="myApp" ng-controller="TriangleController">
     <form ng-submit="search()">
         <div>Enter your triangle sides below: </div>
         <table>
@@ -45,6 +45,10 @@
         <div>
         <p>{{ triangleResult.content }}</p>
         </div>
+
+    <div>
+        <img alt="triangle" ng-src="{{triangleResult.img()}}" style="height: 100px; width: 100px" />
+    </div>
 
 </div>
 </body>
