@@ -17,7 +17,8 @@
     <script src="TriangleController.js"></script>
     <script>
         function showImage() {
-            document.getElementById('triangleDiv').style.display = "block";}
+            document.getElementById('triangleDiv').style.display = "block";
+            document.getElementById('mainDiv').className='w3-display-bottommiddle';}
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +44,7 @@
         Triangle API
     </div>
 
-    <div class="w3-display-middle" ng-app="myApp" ng-controller="TriangleController">
+    <div class="w3-display-middle" ng-app="myApp" ng-controller="TriangleController" id="mainDiv">
         <h1 class="w3-jumbo w3-animate-top">Check triangle</h1>
         <hr class="w3-border-grey" style="margin:auto;width:40%">
         <p class="w3-large w3-center">Enter your triangle sides below</p>
